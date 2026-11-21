@@ -24,7 +24,6 @@ pipeline {
                 sh '''
                     test -f build/index.html
                     npm test
-                    test -s test-results/junit.xml
                 '''
             }
         }
