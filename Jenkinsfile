@@ -3,11 +3,6 @@ pipeline {
 
     stages {
         stage('Build') {
-            agent {
-                dockerContainer {
-                    image 'node:18-alpine'
-                }
-            }
             steps {
                 sh '''
                     ls -la
@@ -21,11 +16,6 @@ pipeline {
         }
 
         stage('Test') {
-            agent {
-                dockerContainer {
-                    image 'node:18-alpine'
-                }
-            }
             steps {
                 sh '''
                     test -f build/index.html
@@ -34,11 +24,6 @@ pipeline {
             }
         }
         stage ('E2E') {
-            agent {
-                dockerContainer {
-                    image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
-                }
-            }
             steps {
                  sh '''
                     npm install serve
