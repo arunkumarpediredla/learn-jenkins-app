@@ -26,6 +26,11 @@ pipeline {
                     npm test
                 '''
             }
+            steps('unit test') {
+                sh '''
+                    npm test
+                '''
+            }
         }
         stage ('E2E') {
             steps {
