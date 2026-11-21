@@ -20,16 +20,15 @@ pipeline {
         }
 
         stage('Test') {
-            steps {
-                sh '''
-                    test -f build/index.html
-                    npm test
-                '''
-            }
-            steps('unit test') {
-                sh '''
-                    npm test
-                '''
+            stages {
+                stage('Unit Test') {
+                    steps {
+                        sh '''
+                            test -f build/index.html
+                            npm test
+                        '''
+                    }
+                }
             }
         }
         stage ('E2E') {
