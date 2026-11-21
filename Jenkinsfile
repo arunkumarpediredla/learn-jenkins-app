@@ -20,6 +20,7 @@ pipeline {
                 sh '''
                     test -f build/index.html
                     npm test
+                    test -s test-results/junit.xml
                 '''
             }
         }
@@ -36,7 +37,7 @@ pipeline {
     }
     post {
         always {
-            junit 'test-results/junit.xml'
+            junit testResults: 'test-results/junit.xml', allowEmptyResults: true
         }
     }
 }
